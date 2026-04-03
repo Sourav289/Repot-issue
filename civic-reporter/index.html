@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civic Reporter — Report. Track. Resolve.</title>
+  <meta name="description" content="A civic-tech platform to report and track public issues like potholes, garbage, drainage failures and more.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo" aria-label="Civic Reporter Home">
+        <div class="logo-icon" aria-hidden="true">🏛</div>
+        Civic Reporter
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Issue</a>
+        <a href="issues.html">All Issues</a>
+        <a href="admin.html">Admin</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        <a href="report.html" class="btn-report-nav">+ Report Issue</a>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" role="menu">
+    <a href="index.html" role="menuitem">🏠 Home</a>
+    <a href="report.html" role="menuitem">📍 Report Issue</a>
+    <a href="issues.html" role="menuitem">📋 All Issues</a>
+    <a href="admin.html" role="menuitem">🏛️ Admin</a>
+  </div>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span>🏙️</span> Civic Technology Platform
+        </div>
+        <h1 class="hero-title">
+          Your city.<br>
+          Your <em>voice.</em><br>
+          Fixed faster.
+        </h1>
+        <p class="hero-desc">
+          Report potholes, garbage, broken streetlights, and drainage issues in minutes.
+          Track their status in real-time until they're resolved.
+        </p>
+        <div class="hero-cta">
+          <a href="report.html" class="btn-primary">
+            📍 Report an Issue
+          </a>
+          <a href="issues.html" class="btn-secondary">
+            View All Issues →
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num" id="stat-total">0</span>
+            <span class="stat-label">Total Reports</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-pending">0</span>
+            <span class="stat-label">In Progress</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-resolved">0</span>
+            <span class="stat-label">Resolved</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-map-card">
+          <div class="hero-map-bg">
+            <div class="map-grid"></div>
+            <div class="map-dot"></div>
+            <div class="map-dot"></div>
+            <div class="map-dot"></div>
+            <div class="map-dot"></div>
+          </div>
+          <div class="hero-map-info">
+            <div class="mini-issue-item">
+              <div class="mini-issue-dot" style="background:var(--accent)"></div>
+              <span class="mini-issue-text">Pothole — MG Road Junction</span>
+              <span class="mini-issue-badge badge-progress">In Progress</span>
+            </div>
+            <div class="mini-issue-item">
+              <div class="mini-issue-dot" style="background:var(--yellow)"></div>
+              <span class="mini-issue-text">Garbage — Park Street</span>
+              <span class="mini-issue-badge badge-pending">Pending</span>
+            </div>
+            <div class="mini-issue-item">
+              <div class="mini-issue-dot" style="background:var(--green)"></div>
+              <span class="mini-issue-text">Streetlight — Brigade Road</span>
+              <span class="mini-issue-badge badge-resolved">Resolved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES STRIP -->
+    <section class="features-strip" aria-label="Platform features">
+      <div class="features-inner">
+        <div class="feature-item">
+          <div class="feature-icon">📍</div>
+          <div class="feature-title">Auto Location Detection</div>
+          <p class="feature-text">One tap to pin your exact GPS coordinates to any report.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📸</div>
+          <div class="feature-title">Photo Evidence</div>
+          <p class="feature-text">Upload photos to give authorities clear visual proof of the issue.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🔔</div>
+          <div class="feature-title">Real-time Tracking</div>
+          <p class="feature-text">Watch your report move from Pending → In Progress → Resolved.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🏛️</div>
+          <div class="feature-title">Admin Dashboard</div>
+          <p class="feature-text">Municipal officers can triage and update all issues in one place.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LATEST ISSUES -->
+    <section aria-label="Latest reported issues">
+      <div class="section-header">
+        <h2 class="section-title">Latest Reports</h2>
+        <a href="issues.html" class="section-link">View all →</a>
+      </div>
+      <div class="issues-grid" id="latest-issues-grid" role="list">
+        <!-- Populated by app.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <div class="logo-icon" aria-hidden="true">🏛</div>
+          Civic Reporter
+        </div>
+        <p class="footer-brand-desc">
+          Empowering citizens to build better cities through transparent, accountable civic reporting.
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <nav class="footer-links">
+          <a href="report.html">Report an Issue</a>
+          <a href="issues.html">Browse Issues</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-col-title">Categories</div>
+        <nav class="footer-links">
+          <a href="issues.html">🕳️ Potholes</a>
+          <a href="issues.html">🗑️ Garbage</a>
+          <a href="issues.html">💡 Streetlights</a>
+          <a href="issues.html">🌊 Drainage</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Civic Reporter. Built with ❤️ for better cities.</span>
+      <span class="footer-copy" style="font-family:var(--font-mono);font-size:11px;">v1.0.0 — Local Demo</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

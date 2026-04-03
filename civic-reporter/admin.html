@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Civic Reporter</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+  <style>
+    /* Admin-only extra styles */
+    .admin-header-bar {
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-align: center;
+      padding: 6px 24px;
+    }
+    .admin-toolbar-right {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn-export {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition);
+    }
+    .btn-export:hover { background: var(--border); }
+    .admin-search-wrapper {
+      position: relative;
+    }
+    .admin-search-wrapper input {
+      padding-left: 36px;
+      width: 220px;
+    }
+    .admin-search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ADMIN BANNER -->
+  <div class="admin-header-bar">
+    🔐 ADMIN PANEL — Authorised Personnel Only
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🏛</div>
+        Civic Reporter
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Issue</a>
+        <a href="issues.html">All Issues</a>
+        <a href="admin.html">Admin</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="report.html">📍 Report Issue</a>
+    <a href="issues.html">📋 All Issues</a>
+    <a href="admin.html">🏛️ Admin</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-tag">🏛️ Administration</div>
+      <h1 class="page-hero-title">Admin Dashboard</h1>
+      <p class="page-hero-sub">Manage and update the status of all reported civic issues.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="admin-container">
+
+      <!-- Stats Row -->
+      <div class="admin-stats-row">
+        <div class="admin-stat-card accent-card">
+          <div class="admin-stat-label">Total Reports</div>
+          <div class="admin-stat-num" id="admin-stat-total">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">⏳ Pending</div>
+          <div class="admin-stat-num" id="admin-stat-pending" style="color:var(--yellow)">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">🔧 In Progress</div>
+          <div class="admin-stat-num" id="admin-stat-progress" style="color:var(--blue)">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">✅ Resolved</div>
+          <div class="admin-stat-num" id="admin-stat-resolved" style="color:var(--green)">0</div>
+        </div>
+      </div>
+
+      <!-- Table Card -->
+      <div class="table-card">
+        <div class="table-toolbar">
+          <span class="table-title">📋 Issue Management</span>
+          <div class="admin-toolbar-right">
+            <div class="admin-search-wrapper">
+              <span class="admin-search-icon">🔍</span>
+              <input
+                type="search"
+                id="admin-search"
+                placeholder="Search issues…"
+                autocomplete="off"
+                aria-label="Search issues in admin"
+              >
+            </div>
+            <button class="btn-export" id="export-btn" aria-label="Export as CSV">
+              ⬇ Export CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="table-wrapper" role="region" aria-label="Issues table" tabindex="0">
+          <table aria-label="Civic issues management table">
+            <thead>
+              <tr>
+                <th>Issue</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Location</th>
+                <th>Update Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-tbody">
+              <!-- Populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Help note -->
+      <div style="margin-top:16px;padding:14px 18px;background:var(--yellow-light);border:1px solid rgba(181,132,10,0.2);border-radius:var(--radius-sm);display:flex;align-items:center;gap:10px;">
+        <span style="font-size:18px;">ℹ️</span>
+        <p style="font-size:13px;color:var(--text-muted);">
+          Click <strong>Pending</strong>, <strong>In Progress</strong>, or <strong>Resolved</strong> buttons to update an issue's status instantly.
+          Changes are saved automatically to LocalStorage.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><div class="logo-icon">🏛</div> Civic Reporter</div>
+        <p class="footer-brand-desc">Empowering citizens to build better cities.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <nav class="footer-links">
+          <a href="report.html">Report an Issue</a>
+          <a href="issues.html">Browse Issues</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-col-title">Categories</div>
+        <nav class="footer-links">
+          <a href="issues.html">🕳️ Potholes</a>
+          <a href="issues.html">🗑️ Garbage</a>
+          <a href="issues.html">💡 Streetlights</a>
+          <a href="issues.html">🌊 Drainage</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Civic Reporter.</span>
+    </div>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Issue — Civic Reporter</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🏛</div>
+        Civic Reporter
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Issue</a>
+        <a href="issues.html">All Issues</a>
+        <a href="admin.html">Admin</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="report.html">📍 Report Issue</a>
+    <a href="issues.html">📋 All Issues</a>
+    <a href="admin.html">🏛️ Admin</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-tag">📍 Submit a Report</div>
+      <h1 class="page-hero-title">Report a Public Issue</h1>
+      <p class="page-hero-sub">Fill in the details below. Your report will be reviewed by the municipal authority.</p>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <main>
+    <div class="form-container">
+      <div class="form-card">
+        <form id="report-form" novalidate>
+
+          <!-- Section 1: Issue Details -->
+          <h2 class="form-section-title"><span>1</span> Issue Details</h2>
+
+          <div class="form-row">
+            <label for="input-title">Issue Title <span class="required">*</span></label>
+            <input
+              type="text"
+              id="input-title"
+              placeholder="e.g. Deep pothole at MG Road junction"
+              maxlength="120"
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="form-row">
+            <label for="input-desc">Description <span class="required">*</span></label>
+            <textarea
+              id="input-desc"
+              placeholder="Describe the issue in detail — size, severity, duration, impact on residents…"
+              rows="4"
+              maxlength="1000"
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="input-category">Category <span class="required">*</span></label>
+            <select id="input-category">
+              <option value="" disabled selected>Select a category…</option>
+              <option value="Pothole">🕳️ Pothole</option>
+              <option value="Garbage">🗑️ Garbage / Waste</option>
+              <option value="Streetlight">💡 Streetlight Failure</option>
+              <option value="Drainage">🌊 Drainage / Flooding</option>
+              <option value="Other">📌 Other</option>
+            </select>
+          </div>
+
+          <!-- Section 2: Location -->
+          <h2 class="form-section-title" style="margin-top:32px;"><span>2</span> Location</h2>
+
+          <div class="form-row">
+            <label for="input-location">Coordinates / Address <span class="required">*</span></label>
+            <div class="location-field">
+              <input
+                type="text"
+                id="input-location"
+                placeholder="e.g. 12.9716° N, 77.5946° E  or  type an address"
+                autocomplete="off"
+              >
+              <button type="button" class="btn-locate" id="btn-locate">
+                📍 Detect
+              </button>
+            </div>
+            <div style="font-size:12px;color:var(--text-faint);margin-top:6px;">Use "Detect" to auto-fill your GPS coordinates, or type a landmark/address.</div>
+          </div>
+
+          <!-- Section 3: Photo Evidence -->
+          <h2 class="form-section-title" style="margin-top:32px;"><span>3</span> Photo Evidence</h2>
+
+          <div class="form-row">
+            <label>Upload Image <span style="color:var(--text-faint);font-weight:400;">(optional, max 5MB)</span></label>
+            <div class="upload-area" id="upload-area">
+              <input type="file" id="input-image" accept="image/*" aria-label="Upload image">
+              <div class="upload-icon">📷</div>
+              <div class="upload-text">Click or drag & drop to upload</div>
+              <div class="upload-hint">JPG, PNG, WEBP — Max 5 MB</div>
+            </div>
+            <div class="image-preview-wrapper" id="image-preview-wrap">
+              <img id="image-preview" src="" alt="Preview">
+              <button type="button" class="remove-preview" id="remove-preview-btn" aria-label="Remove image">×</button>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="form-actions">
+            <button type="reset" class="btn-reset" id="reset-btn">Clear Form</button>
+            <button type="submit" class="btn-submit" id="submit-btn">
+              🚀 Submit Report
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Tip box -->
+      <div style="margin-top:20px;padding:16px 20px;background:var(--blue-light);border:1px solid rgba(26,94,168,0.15);border-radius:var(--radius-sm);">
+        <div style="font-size:13px;font-weight:700;color:var(--blue);margin-bottom:6px;">💡 Tips for a good report</div>
+        <ul style="list-style:disc;padding-left:18px;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:13px;color:var(--text-muted);">Be as specific as possible about the exact location.</li>
+          <li style="font-size:13px;color:var(--text-muted);">Include a clear photo showing the issue — it speeds up resolution.</li>
+          <li style="font-size:13px;color:var(--text-muted);">Mention how long the issue has existed and who it affects.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><div class="logo-icon">🏛</div> Civic Reporter</div>
+        <p class="footer-brand-desc">Empowering citizens to build better cities.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <nav class="footer-links">
+          <a href="report.html">Report an Issue</a>
+          <a href="issues.html">Browse Issues</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-col-title">Categories</div>
+        <nav class="footer-links">
+          <a href="issues.html">🕳️ Potholes</a>
+          <a href="issues.html">🗑️ Garbage</a>
+          <a href="issues.html">💡 Streetlights</a>
+          <a href="issues.html">🌊 Drainage</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Civic Reporter.</span>
+    </div>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issue Details — Civic Reporter</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🏛</div>
+        Civic Reporter
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Issue</a>
+        <a href="issues.html">All Issues</a>
+        <a href="admin.html">Admin</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        <a href="report.html" class="btn-report-nav">+ Report Issue</a>
+        <button class="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="report.html">📍 Report Issue</a>
+    <a href="issues.html">📋 All Issues</a>
+    <a href="admin.html">🏛️ Admin</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-tag">🔍 Issue Details</div>
+      <h1 class="page-hero-title">Issue Report</h1>
+      <p class="page-hero-sub">Full details, status timeline, and resolution progress.</p>
+    </div>
+  </div>
+
+  <!-- DETAILS ROOT — populated by app.js -->
+  <main id="details-root" style="padding-top:0;"></main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-logo"><div class="logo-icon">🏛</div> Civic Reporter</div>
+        <p class="footer-brand-desc">Empowering citizens to build better cities.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <nav class="footer-links">
+          <a href="report.html">Report an Issue</a>
+          <a href="issues.html">Browse Issues</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-col-title">Categories</div>
+        <nav class="footer-links">
+          <a href="issues.html">🕳️ Potholes</a>
+          <a href="issues.html">🗑️ Garbage</a>
+          <a href="issues.html">💡 Streetlights</a>
+          <a href="issues.html">🌊 Drainage</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Civic Reporter.</span>
+    </div>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
